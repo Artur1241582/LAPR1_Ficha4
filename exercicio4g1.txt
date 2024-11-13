@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class EstatisticasNumeros {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Quantos números você deseja inserir? ");
+        int n = scanner.nextInt();
+
+        if (n <= 0) {
+            System.out.println("A quantidade de números deve ser maior que zero.");
+            scanner.close();
+            return;
+        }
+
+        int countPositivos = 0;
+        int soma = 0;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Digite o número " + (i + 1) + ": ");
+            int num = scanner.nextInt();
+            soma += num;
+            if (num > 0) {
+                countPositivos++;
+            }
+        }
+
+        double percentualPositivos = ((double) countPositivos / n) * 100;
+        double media = (double) soma / n;
+
+        System.out.printf("Percentual de números positivos: %.2f%%\n", percentualPositivos);
+        System.out.println("Soma dos números: " + soma);
+        System.out.printf("Média dos números: %.2f\n", media);
+
+        scanner.close();
+    }
+}
